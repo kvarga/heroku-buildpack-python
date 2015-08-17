@@ -180,6 +180,9 @@ source $BIN_DIR/steps/gdal
 # Install dependencies with Pip.
 source $BIN_DIR/steps/pip-install
 
+# xmlsec support
+source $BIN_DIR/steps/xmlsec
+
 # Django collectstatic support.
 sub-env $BIN_DIR/steps/collectstatic
 
