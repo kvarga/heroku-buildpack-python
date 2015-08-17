@@ -6,6 +6,7 @@
 
 # Fail fast and fail hard.
 set -eo pipefail
+echo "got here1"
 
 [ "$BUILDPACK_XTRACE" ] && set -o xtrace
 
@@ -55,7 +56,10 @@ bpwatch init $LOGPLEX_KEY
 bpwatch build python $BUILDPACK_VERSION $REQUEST_ID
 TMP_APP_DIR=$CACHE_DIR/tmp_app_dir
 
+echo "got here2"
+
 bpwatch start compile
+echo "got here3"
 
 
 # We'll need to send these statics to other scripts we `source`.
@@ -115,6 +119,7 @@ if [ ! -f requirements.txt ]; then
   echo "-e ." > requirements.txt
 fi
 
+echo "got here4"
 
 # Sticky runtimes.
 if [ -f $CACHE_DIR/.heroku/python-version ]; then
@@ -155,6 +160,7 @@ mkdir .heroku &> /dev/null
 set -e
 
 mkdir -p $(dirname $PROFILE_PATH)
+echo "got here5"
 
 # Install Python.
 source $BIN_DIR/steps/python
@@ -167,22 +173,25 @@ source $BIN_DIR/steps/pip-uninstall
 
 # Mercurial support.
 source $BIN_DIR/steps/mercurial
+echo "got here6"
 
 # Pylibmc support.
 source $BIN_DIR/steps/pylibmc
 
 # Libffi support.
 source $BIN_DIR/steps/cryptography
+echo "got here7"
 
 # GDAL support.
 source $BIN_DIR/steps/gdal
-
-# Install dependencies with Pip.
-source $BIN_DIR/steps/pip-install
+echo "got here8"
 
 # xmlsec support
 echo "---> testing..."
 source $BIN_DIR/steps/xmlsec
+
+# Install dependencies with Pip.
+source $BIN_DIR/steps/pip-install
 
 # Django collectstatic support.
 sub-env $BIN_DIR/steps/collectstatic
