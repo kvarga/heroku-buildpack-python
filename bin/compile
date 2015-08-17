@@ -181,6 +181,7 @@ source $BIN_DIR/steps/gdal
 source $BIN_DIR/steps/pip-install
 
 # xmlsec support
+echo "---> testing..."
 source $BIN_DIR/steps/xmlsec
 
 # Django collectstatic support.
